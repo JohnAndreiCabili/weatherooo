@@ -1,0 +1,164 @@
+.weatherContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.weatherContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.1), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.weatherContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.weatherIcon {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+}
+
+.weatherIcon:hover {
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transform: scale(1.05) rotate(5deg);
+}
+
+.weatherIcon img {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+}
+
+.weatherIcon:hover img {
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transform: scale(1.05) rotate(5deg);
+}
+
+.temperatureValue {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.temperatureValue::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.temperatureValue:hover::after {
+  opacity: 1;
+}
+
+.detailCard {
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.5s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.detailCard:hover::before {
+  transform: rotate(30deg) translate(50%, 50%);
+}
+
+.cityName {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.cityName::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.cityName:hover::after {
+  width: 100%;
+}
+
+.weatherInfo {
+  position: relative;
+  z-index: 2;
+}
+
+.loadingSpinner {
+  position: relative;
+}
+
+.loadingSpinner::before,
+.loadingSpinner::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  animation: pulse-ring 1.5s linear infinite;
+}
+
+.loadingSpinner::after {
+  animation-delay: 0.5s;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+} 

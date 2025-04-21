@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 240, 245, 255;
+  --card-bg: 255, 255, 255;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --accent-color: #3B82F6;
+  --header-gradient: linear-gradient(to right, #3B82F6, #2563EB);
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 23, 29, 41;
+  --card-bg: 30, 40, 58;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --accent-color: #60A5FA;
+  --header-gradient: linear-gradient(to right, #2563EB, #1D4ED8);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  min-height: 100vh;
+}
+
+.weather-card {
+  background-color: rgba(var(--card-bg), 0.9);
+  box-shadow: var(--card-shadow);
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.app-header {
+  background: var(--header-gradient);
+  padding: 1.25rem;
+  border-radius: 0 0 1.5rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: spin 1s linear infinite;
+}
+
+/* Animation for weather transitions */
+.weather-icon {
+  transition: transform 0.3s ease;
+}
+
+.weather-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Activity card styles */
+.activity-card {
+  background-color: rgba(var(--card-bg), 0.7);
+  backdrop-filter: blur(4px);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.activity-card:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(var(--card-bg), 0.9);
+  transform: translateY(-2px);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Weather icon hover effects */
+.weather-icon img {
+  transition: all 0.3s ease-in-out;
+}
+.weather-icon:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+/* Gradient text animation for headings */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-gradient-text {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Activity card hover effects */
+@keyframes pulse-subtle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.2);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* Weather details card animation */
+.weather-details-card:hover {
+  animation: pulse-subtle 2s infinite;
+}
+
+/* Text shadow utilities for better readability against background gradients */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.text-shadow-white-sm {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+.text-shadow-white-md {
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,91 @@
+@keyframes bloom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.logoContainer {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 6px;
+  border-radius: 8px;
+  user-select: none;
+}
+
+.logoContainer:hover {
+  transform: scale(1.05);
+}
+
+.logoText {
+  font-weight: 600;
+  position: relative;
+  transition: letter-spacing 0.3s ease;
+  font-size: 1.25rem;
+}
+
+.logoContainer:hover .logoText {
+  letter-spacing: 0.5px;
+}
+
+.bloomText {
+  color: #ff7e5f;
+  position: relative;
+  transition: all 0.3s ease;
+  display: inline-block;
+  transform-origin: center;
+}
+
+.logoContainer:hover .bloomText {
+  color: #ff4e50;
+}
+
+.darkMode .bloomText {
+  color: #ff9e7f;
+}
+
+.darkMode:hover .bloomText {
+  color: #ff6e70;
+}
+
+/* Individual character animations */
+.char1, .char2, .char3 {
+  display: inline-block;
+  transform-origin: bottom center;
+}
+
+.logoContainer:hover .char1 {
+  animation: bloom 0.5s ease-in-out 0.05s;
+}
+
+.logoContainer:hover .char2 {
+  animation: bloom 0.5s ease-in-out 0.1s;
+}
+
+.logoContainer:hover .char3 {
+  animation: bloom 0.5s ease-in-out 0.15s;
+}
+
+/* Subtle constant animation */
+.logoText {
+  animation: pulse 3s infinite ease-in-out;
+} 
