@@ -3,93 +3,17 @@
   overflow: hidden;
 }
 
-.activityCard::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  transition: transform 0.5s ease-out;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.activityCard:hover::before {
-  transform: rotate(30deg) translate(50%, 50%);
-}
-
 .activityIcon {
-  transition: transform 0.3s ease;
+  transition: none;
   z-index: 2;
   position: relative;
-}
-
-.activityCard:hover .activityIcon {
-  transform: rotate(10deg);
 }
 
 .recommendationsContainer {
   position: relative;
 }
 
-.recommendationsContainer::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.03));
-  pointer-events: none;
-}
-
-.title {
-  background: linear-gradient(90deg, #4f46e5, #2563eb, #3b82f6, #4f46e5);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientFlow 6s ease infinite;
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .disclaimer {
   position: relative;
   overflow: hidden;
-}
-
-.disclaimer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(59, 130, 246, 0.05) 0%,
-    rgba(59, 130, 246, 0.1) 50%,
-    rgba(59, 130, 246, 0.05) 100%
-  );
-  animation: shimmer 3s infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
 } 

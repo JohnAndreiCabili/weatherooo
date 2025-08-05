@@ -218,55 +218,62 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen transition-colors dark:bg-gray-900 dark:text-white flex flex-col w-full">
-      {/* macOS style toolbar */}
-      <div className="app-toolbar backdrop-blur-md bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 h-12 flex items-center px-4 z-10">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 transition-all duration-500 flex flex-col w-full relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-indigo-400/20 to-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Modern frosted glass toolbar */}
+      <div className="relative z-10 backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 border-b border-white/20 dark:border-slate-700/50 h-16 flex items-center px-6 shadow-md">
         <div className="flex items-center">
           <button 
             onClick={toggleSidebar}
-            className="mr-4 rounded-full p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="mr-6 p-2 rounded-xl bg-white/50 dark:bg-slate-700/50 hover:bg-white/70 dark:hover:bg-slate-600/50 transition-all duration-300 shadow-sm"
             aria-label="Toggle sidebar"
           >
-            <MdSearch className="text-xl" />
+            <MdSearch className="text-xl text-slate-700 dark:text-slate-300" />
           </button>
           <BloomText darkMode={darkMode} />
         </div>
         <div className="flex-grow"></div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-3">
           <button 
             onClick={toggleDarkMode}
-            className="p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-xl bg-white/50 dark:bg-slate-700/50 hover:bg-white/70 dark:hover:bg-slate-600/50 transition-all duration-300 shadow-sm"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {darkMode ? <MdLightMode className="text-xl" /> : <MdDarkMode className="text-xl" />}
+            {darkMode ? <MdLightMode className="text-xl text-slate-300" /> : <MdDarkMode className="text-xl text-slate-700" />}
           </button>
           <UnitToggle unit={unit} onToggle={toggleUnit} />
           <button 
             onClick={handleRefresh}
-            className="p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-xl bg-white/50 dark:bg-slate-700/50 hover:bg-white/70 dark:hover:bg-slate-600/50 transition-all duration-300 shadow-sm"
             aria-label="Refresh weather data"
             disabled={loading}
           >
-            <MdRefresh className={`text-xl ${loading ? 'animate-spin' : ''}`} />
+            <MdRefresh className={`text-xl text-slate-700 dark:text-slate-300 ${loading ? 'animate-spin' : ''}`} />
           </button>
         </div>
       </div>
       
       {/* Main content with optional sidebar */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* macOS style sidebar */}
-        {sidebarOpen && (
-          <div className="w-64 bg-gray-100/90 dark:bg-gray-800/90 backdrop-blur-md border-r border-gray-200 dark:border-gray-700 h-full flex flex-col">
-            <div className="p-4">
+      <div className="flex flex-1 relative z-10 p-4">
+                  {/* Modern frosted glass sidebar */}
+          {sidebarOpen && (
+            <div className="w-72 backdrop-blur-xl bg-white/60 dark:bg-slate-800/60 rounded-3xl shadow-lg border border-white/20 dark:border-slate-700/50 h-full flex flex-col mr-4">
+            <div className="p-6">
               <SearchBar onSearch={fetchWeatherData} onUseLocation={handleUseLocation} locationLoading={locationLoading} />
             </div>
-            <div className="p-4 flex-1 overflow-auto">
-              <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Popular Cities</h2>
-              <div className="space-y-1">
+            <div className="p-6 flex-1 overflow-auto">
+              <h2 className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">Popular Cities</h2>
+              <div className="space-y-2">
                 {popularCities.map((city) => (
                   <button
                     key={city}
-                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-medium transition-colors"
+                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/50 dark:hover:bg-slate-700/50 text-sm font-medium transition-all duration-300 text-slate-700 dark:text-slate-300 hover:shadow-md"
                     onClick={() => fetchWeatherData(city)}
                   >
                     {city}
@@ -275,56 +282,54 @@ export default function Home() {
               </div>
             </div>
             {lastUpdated && (
-              <div className="p-3 text-xs text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+              <div className="p-4 text-xs text-slate-500 dark:text-slate-400 border-t border-white/20 dark:border-slate-700/50 bg-white/30 dark:bg-slate-800/30 backdrop-blur-sm rounded-b-3xl">
                 Last updated: {lastUpdated.toLocaleTimeString()}
               </div>
             )}
           </div>
         )}
         
-        {/* Main content */}
-        <div className="flex-1 overflow-auto">
-          <div className="p-6">
-            {/* Current weather */}
-            <div className="mb-8">
-              <WeatherDisplay 
-                weatherData={weatherData} 
-                isLoading={loading} 
-                error={error} 
-                unit={unit} 
-              />
-            </div>
-            
-            {/* Hourly forecast */}
-            <div className="mb-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-4 shadow-lg">
-              <h2 className="text-lg font-medium mb-4 px-2">Hourly Forecast</h2>
-              <HourlyForecast 
-                forecastData={forecastData} 
-                isLoading={loading} 
-                error={error} 
-                unit={unit} 
-              />
-            </div>
-            
-            {/* 5-day forecast */}
-            <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-4 shadow-lg">
-              <h2 className="text-lg font-medium mb-4 px-2">5-Day Forecast</h2>
-              <ForecastDisplay 
-                forecastData={forecastData} 
-                isLoading={loading} 
-                error={error} 
-                unit={unit} 
-              />
-            </div>
-            
-            {/* Attribution footer */}
-            <div className="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-500 dark:text-gray-400">
-              <p>Weather data provided by GoWeather API</p>
-              <p className="mt-1">© {new Date().getFullYear()} weather<span className="text-orange-400">ooo</span> - Built for demonstration purposes only</p>
-            </div>
+        {/* Main content area */}
+        <div className="flex-1 overflow-auto pb-8">
+          {/* Current weather */}
+          <div className="mb-8 px-2">
+            <WeatherDisplay 
+              weatherData={weatherData} 
+              isLoading={loading} 
+              error={error} 
+              unit={unit} 
+            />
+          </div>
+          
+          {/* Hourly forecast */}
+          <div className="mb-8 backdrop-blur-xl bg-white/60 dark:bg-slate-800/60 rounded-3xl p-6 shadow-lg border border-white/20 dark:border-slate-700/50 mx-2">
+            <h2 className="text-xl font-semibold mb-6 px-2 text-slate-800 dark:text-slate-200">Hourly Forecast</h2>
+            <HourlyForecast 
+              forecastData={forecastData} 
+              isLoading={loading} 
+              error={error} 
+              unit={unit} 
+            />
+          </div>
+          
+          {/* 5-day forecast */}
+          <div className="backdrop-blur-xl bg-white/60 dark:bg-slate-800/60 rounded-3xl p-6 shadow-lg border border-white/20 dark:border-slate-700/50 mx-2">
+            <h2 className="text-xl font-semibold mb-6 px-2 text-slate-800 dark:text-slate-200">5-Day Forecast</h2>
+            <ForecastDisplay 
+              forecastData={forecastData} 
+              isLoading={loading} 
+              error={error} 
+              unit={unit} 
+            />
+          </div>
+          
+          {/* Attribution footer */}
+          <div className="mt-8 pt-6 border-t border-white/20 dark:border-slate-700/50 text-center text-sm text-slate-500 dark:text-slate-400">
+            <p>Weather data provided by GoWeather API</p>
+            <p className="mt-1">© {new Date().getFullYear()} weather<span className="text-orange-400">ooo</span> - Built for demonstration purposes only</p>
           </div>
         </div>
-    </div>
+      </div>
     </main>
   );
 }

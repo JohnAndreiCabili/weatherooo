@@ -93,10 +93,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, onUseLocation, location
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="relative">
           <div className={`
-            flex items-center bg-gray-100 dark:bg-gray-700 rounded-lg transition-all duration-200
-            ${isInputFocused ? 'ring-2 ring-blue-500 dark:ring-blue-400' : 'ring-0'}
+            flex items-center backdrop-blur-xl bg-white/60 dark:bg-slate-800/60 rounded-2xl transition-all duration-300 border border-white/20 dark:border-slate-700/50 shadow-lg
+            ${isInputFocused ? 'ring-2 ring-blue-500/50 dark:ring-blue-400/50 shadow-xl' : 'ring-0'}
           `}>
-            <MdOutlineSearch className="ml-3 text-gray-400 dark:text-gray-400 text-lg" />
+            <MdOutlineSearch className="ml-4 text-slate-500 dark:text-slate-400 text-lg" />
             <input
               ref={inputRef}
               type="text"
@@ -108,7 +108,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, onUseLocation, location
               }}
               onBlur={() => setIsInputFocused(false)}
               placeholder="Search city"
-              className="w-full py-2 px-2 bg-transparent border-none focus:outline-none text-sm font-medium text-gray-700 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+              className="w-full py-3 px-3 bg-transparent border-none focus:outline-none text-sm font-medium text-slate-700 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400"
             />
             
             <AnimatePresence>
@@ -119,7 +119,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, onUseLocation, location
                   exit={{ opacity: 0, scale: 0.8 }}
                   type="button"
                   onClick={handleClearSearch}
-                  className="mr-3 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 rounded-full p-0.5 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  className="mr-3 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 rounded-full p-1 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-200"
                 >
                   <MdClose className="text-sm" />
                 </motion.button>
@@ -131,17 +131,17 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, onUseLocation, location
               onClick={onUseLocation}
               disabled={locationLoading}
               className={`
-                h-7 w-7 mr-1 flex items-center justify-center rounded-full transition-colors
+                h-8 w-8 mr-3 flex items-center justify-center rounded-xl transition-all duration-300
                 ${locationLoading 
-                  ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed' 
-                  : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500'}
+                  ? 'bg-slate-300/50 dark:bg-slate-600/50 cursor-not-allowed' 
+                  : 'bg-white/30 dark:bg-slate-700/50 hover:bg-white/50 dark:hover:bg-slate-600/50 hover:shadow-md'}
               `}
               title="Use current location"
             >
               {locationLoading ? (
-                <div className="w-3 h-3 border-2 border-gray-500 dark:border-gray-400 border-t-transparent rounded-full animate-spin" />
+                <div className="w-3 h-3 border-2 border-slate-500 dark:border-slate-400 border-t-transparent rounded-full animate-spin" />
               ) : (
-                <MdMyLocation className="text-sm text-gray-500 dark:text-gray-300" />
+                <MdMyLocation className="text-sm text-slate-600 dark:text-slate-300" />
               )}
             </button>
           </div>
@@ -154,7 +154,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, onUseLocation, location
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute top-full left-0 right-0 mt-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-lg z-10 border border-gray-200 dark:border-gray-700 max-h-80 overflow-y-auto"
+                className="absolute top-full left-0 right-0 mt-2 backdrop-blur-xl bg-white/80 dark:bg-slate-800/80 rounded-2xl shadow-2xl z-10 border border-white/20 dark:border-slate-700/50 max-h-80 overflow-y-auto"
               >
                 {recentSearches.length > 0 && (
                   <div>

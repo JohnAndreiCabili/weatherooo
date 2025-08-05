@@ -218,15 +218,6 @@ const itemVariants = {
       stiffness: 200,
       damping: 10
     }
-  },
-  hover: {
-    scale: 1.05,
-    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-    transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10
-    }
   }
 };
 
@@ -260,14 +251,14 @@ const ActivityRecommendations: React.FC<ActivityRecommendationsProps> = ({
   
   return (
     <motion.div 
-      className={`p-6 bg-white/95 dark:bg-gray-800/95 text-gray-800 dark:text-gray-100 rounded-b-xl backdrop-blur-md ${styles.recommendationsContainer}`}
+      className="p-6 bg-white/95 dark:bg-gray-800/95 text-gray-800 dark:text-gray-100 rounded-b-xl backdrop-blur-md"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <motion.div className="flex items-center justify-between mb-6">
         <motion.h3 
-          className={`text-xl font-bold text-center md:text-left ${styles.title}`}
+          className="text-xl font-bold text-center md:text-left"
           variants={titleVariants}
         >
           {hasLocationSpecific ? (
@@ -303,19 +294,14 @@ const ActivityRecommendations: React.FC<ActivityRecommendationsProps> = ({
           return (
             <motion.div 
               key={index} 
-              className={`bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 p-4 rounded-lg shadow-sm hover:shadow-lg transition-all flex flex-col items-center text-center ${styles.activityCard} ${isLocationSpecific ? 'ring-1 ring-blue-300 dark:ring-blue-700' : ''}`}
+              className={`bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 flex flex-col items-center text-center ${isLocationSpecific ? 'ring-1 ring-blue-300 dark:ring-blue-700' : ''}`}
               variants={itemVariants}
-              whileHover="hover"
-              whileTap={{ scale: 0.95 }}
             >
-              <motion.div 
-                className={`text-3xl mb-3 rounded-full p-3 ${isLocationSpecific ? 'bg-blue-50/80 dark:bg-blue-900/50' : 'bg-white/80 dark:bg-gray-600/50'} shadow-inner ${styles.activityIcon}`}
-                initial={{ rotate: -5 }}
-                animate={{ rotate: 0 }}
-                transition={{ duration: 0.5 }}
+              <div 
+                className={`text-3xl mb-3 rounded-full p-3 ${isLocationSpecific ? 'bg-blue-50/80 dark:bg-blue-900/50' : 'bg-white/80 dark:bg-gray-600/50'}`}
               >
                 {activityIcon}
-              </motion.div>
+              </div>
               <span className="font-medium text-base">{activity}</span>
               
               {isLocationSpecific && (
@@ -335,7 +321,7 @@ const ActivityRecommendations: React.FC<ActivityRecommendationsProps> = ({
       </motion.div>
       
       <motion.p 
-        className={`mt-6 text-sm text-center text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 ${styles.disclaimer}`}
+        className="mt-6 text-sm text-center text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
