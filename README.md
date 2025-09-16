@@ -1,89 +1,44 @@
-# Weather Website
+# Weatherooo
 
-A clean, minimalist weather website that provides current weather data, forecasts, and activity recommendations based on weather conditions.
+[![Live Demo](https://img.shields.io/badge/Live-Site-Weatherooo-blue)](https://weatherooo.vercel.app)
+
+Weatherooo is a minimalist weather application that provides current conditions, forecasts, and activity suggestions based on location or searched city.
+
+---
 
 ## Features
 
-- **Modern Liquid Glass Design**: Beautiful frosted glass effect with rounded corners
-- **Current Weather Display**: Temperature, condition, humidity, wind speed, pressure, and more
-- **5-Day Forecast**: Overview of the weather for the next 5 days
-- **Hourly Forecast**: Weather predictions hour by hour
-- **Activity Recommendations**: Location-specific suggestions based on weather conditions
-- **Search by City Name**: Look up weather in any city with autocomplete
-- **Auto Location Detection**: Get weather for your current location
-- **Dark Mode / Light Mode**: Toggle between dark and light themes
-- **Unit Toggle**: Switch between Celsius and Fahrenheit
-- **Responsive Design**: Works on mobile, tablet, and desktop
-- **Save Last Searched City**: Automatically remembers your last search
-- **Auto-refresh**: Weather data updates every 10 minutes
-- **Optimized Performance**: Fast loading with Next.js 15 optimizations
+- Modern frosted glass design with rounded corners  
+- Current weather details: temperature, condition, humidity, wind speed, and pressure  
+- 5-day forecast overview and hourly forecast  
+- Activity recommendations based on weather conditions  
+- City search with autocomplete  
+- Location-based weather detection  
+- Light and dark mode support  
+- Celsius and Fahrenheit toggle  
+- Responsive design for mobile, tablet, and desktop  
+- Remembers the last searched city  
+- Auto-refreshes weather data every 10 minutes  
 
-## Technologies Used
+---
 
-- NextJS 15.2.4
-- TypeScript
-- TailwindCSS
-- React Icons
-- Framer Motion
-- OpenWeatherMap API
-- Liquid Glass Design System
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Next.js 15 | Framework for UI and routing |
+| TypeScript | Type safety and maintainable code |
+| TailwindCSS | Utility-first styling and responsive design |
+| React Icons | Icons across the interface |
+| Framer Motion | Smooth animations and transitions |
+| OpenWeatherMap API | Weather data source |
+
+---
 
 ## Getting Started
 
-1. Clone the repository
-2. Install dependencies
-   ```bash
-   npm install
-   ```
-3. Create a `.env.local` file in the root directory with your weather API key:
-   ```
-   NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
-   ```
-4. Run the development server
-   ```bash
-   npm run dev
-   ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+Clone the repository:
 
-## Deployment
-
-### Vercel Deployment
-
-This project is optimized for deployment on Vercel:
-
-1. **Connect to GitHub**: Link your GitHub repository to Vercel
-2. **Environment Variables**: Add your `NEXT_PUBLIC_OPENWEATHER_API_KEY` in Vercel's environment variables
-3. **Deploy**: Vercel will automatically build and deploy your application
-
-### Manual Deployment
-
-1. Build the project:
-   ```bash
-   npm run build
-   ```
-2. Start the production server:
-   ```bash
-   npm start
-   ```
-
-## Troubleshooting
-
-### "City not found" Error
-- Make sure you're entering a valid city name
-- Check your API key is correctly set up
-- Try searching for major cities
-- Verify your internet connection is working
-
-### Location Detection Not Working
-- Make sure you've allowed location access in your browser
-- Some browsers require HTTPS for location services to work
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- OpenWeatherMap for providing the weather data API
-- TailwindCSS for the styling framework
-- React Icons for the icon library
+```bash
+git clone https://github.com/JohnAndreiCabili/weatherooo.git
+cd weatherooo
